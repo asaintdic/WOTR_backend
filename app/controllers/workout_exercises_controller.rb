@@ -14,15 +14,15 @@ class WorkoutExercisesController < ApplicationController
   end
 
   # POST /workout_exercises
-  # def create
-  #   @workout_exercise = WorkoutExercise.new(workout_exercise_params)
+  def create
+    @workout_exercise = WorkoutExercise.new(workout_exercise_params)
 
-  #   if @workout_exercise.save
-  #     render json: @workout_exercise, status: :created, location: @workout_exercise
-  #   else
-  #     render json: @workout_exercise.errors, status: :unprocessable_entity
-  #   end
-  # end
+    if @workout_exercise.save
+      render json: @workout_exercise, status: :created, location: @workout_exercise
+    else
+      render json: @workout_exercise.errors, status: :unprocessable_entity
+    end
+  end
 
   # # PATCH/PUT /workout_exercises/1
   # def update

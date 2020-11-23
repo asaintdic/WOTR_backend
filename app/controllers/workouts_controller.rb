@@ -4,25 +4,26 @@ class WorkoutsController < ApplicationController
   # GET /workouts
   def index
     @workouts = Workout.all
-
-    render json: WorkoutSerializer.new(@workouts)
+  
+    render json: @workouts
   end
 
   # GET /workouts/1
   def show
-    render json: WorkoutSerializer.new(@workout)
+  
+    render json: @workout
   end
 
   # POST /workouts
-  # def create
-  #   @workout = Workout.new(workout_params)
+  def create
+    @workout = Workout.new(workout_params)
 
-  #   if @workout.save
-  #     render json: @workout, status: :created, location: @workout
-  #   else
-  #     render json: @workout.errors, status: :unprocessable_entity
-  #   end
-  # end
+    if @workout.save
+      render json: @workout, status: :created, location: @workout
+    else
+      render json: {error: 'Error Making new Workout'}
+    end
+  end
 
   # # PATCH/PUT /workouts/1
   # def update
