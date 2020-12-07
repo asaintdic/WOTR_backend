@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :exercises
   end
  
+  resources :exercises, only: [:destroy]
+
   # resources :workout_exercises
  
  

@@ -35,9 +35,11 @@ class WorkoutsController < ApplicationController
   # end
 
   # # DELETE /workouts/1
-  # def destroy
-  #   @workout.destroy
-  # end
+  def destroy
+    @workout.destroy
+
+    render json: @workout
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

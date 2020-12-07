@@ -5,19 +5,21 @@ class WorkoutExercisesController < ApplicationController
   def index
     @workout_exercises = WorkoutExercise.all
 
-    render json: WorkoutExerciseSerializer.new(@workout_exercises)
+    render json: @workout_exercises
   end
 
-  # GET /workout_exercises/1
+  # # GET /workout_exercises/1
   def show
-    render json: WorkoutExerciseSerializer.new(@workout_exercise)
+    render json: @workout_exercise
   end
 
-  # POST /workout_exercises
+  # # POST /workout_exercises
   def create
+    
     @workout_exercise = WorkoutExercise.new(workout_exercise_params)
-
+     
     if @workout_exercise.save
+      
       render json: @workout_exercise, status: :created, location: @workout_exercise
     else
       render json: @workout_exercise.errors, status: :unprocessable_entity
@@ -34,15 +36,15 @@ class WorkoutExercisesController < ApplicationController
   # end
 
   # # DELETE /workout_exercises/1
-  # def destroy
-  #   @workout_exercise.destroy
-  # end
+  def destroy
+    @workout_exercise.destroy
+  end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_workout_exercise
-      @workout_exercise = WorkoutExercise.find(params[:id])
-    end
+  #   # Use callbacks to share common setup or constraints between actions.
+    # def set_workout_exercise
+    #   @workout_exercise = WorkoutExercise.find(params[:id])
+    # end
 
     # Only allow a trusted parameter "white list" through.
     def workout_exercise_params
