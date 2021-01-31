@@ -32,14 +32,16 @@ class WorkoutsController < ApplicationController
     render json: @workout
   end
 
+  
   private
   
-    def set_workout
-      @workout = Workout.find(params[:id])
-    end
+    
+  def set_workout
+    @workout = Workout.find(params[:id])
+  end
 
     
-    def workout_params
-      params.require(:workout).permit(:title, :note, :date, :user_id)
-    end
+  def workout_params
+    params.require(:workout).permit(:title, :note, :date, :user_id)
+  end
 end
